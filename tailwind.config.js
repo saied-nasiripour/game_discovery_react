@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'default-text': '#333', // preferred default text color in light mode
+      },
+    },
   },
   plugins: [],
 }

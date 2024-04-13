@@ -1,17 +1,10 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import logo from './../assets/Images/logo.png';
 import {HiOutlineMagnifyingGlass, HiMoon, HiSun} from "react-icons/hi2"
 import {ThemeContext} from "../Context/ThemeContext.jsx";
 
 function Header() {
-    const [toggle, setToggle] = useState(false);
     const {theme, setTheme} = useContext(ThemeContext);
-
-    useEffect(
-        ()=>{
-            console.log("theme: ", theme);
-        }
-    );
 
     return (
         <div className="flex items-center justify-between p-3 w-full">
@@ -24,21 +17,30 @@ function Header() {
                 <div className="items-center justify-center p-2">
                     <HiOutlineMagnifyingGlass/>
                 </div>
-                <input type='text' placeholder="Search Games" className='w-full px-2 bg-transparent outline-none text-black'/>
+                <input
+                    type='text'
+                    placeholder="Search Games"
+                    className='w-full px-2 bg-transparent outline-none text-black'/>
             </div>
             {/*Third column for the theme switcher*/}
             <div className='flex-shrink-0'>
                 {
-                    theme == ""
+                    theme === ""
                     ? <HiMoon
                             className="w-9 h-9 bg-slate-200 text-black p-1 rounded-full cursor-pointer"
                             /*onClick={() => setToggle(false)}*/
-                            onClick={() => setTheme("dark")}
+                            onClick={() => {
+                                setTheme("dark");
+                                localStorage.setItem("theme", "dark");
+                            }}
                         />
                     : <HiSun
                             className="w-9 h-9 bg-slate-200 text-black p-1 rounded-full cursor-pointer"
                             /*onClick={() => setToggle(true)}*/
-                            onClick={() => setTheme("")}
+                            onClick={() => {
+                                setTheme("");
+                                localStorage.setItem("theme", "");
+                            }}
                         />
                 }
             </div>
