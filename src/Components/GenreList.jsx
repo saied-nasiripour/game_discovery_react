@@ -13,8 +13,8 @@ export default function GenreList() {
     const getGenreList = () => {
         GlobalAPi.getGenreList.then((response) => {
             const results = response.data.results;
-            console.log("status code: ", response.status);
-            console.log("response data: ", results);
+            // console.log("status code: ", response.status);
+            // console.log("response data: ", results);
             setGenreList(results);
         });
     };
@@ -30,9 +30,9 @@ export default function GenreList() {
                     <img
                         src={item.image_background}
                         alt={item.name}
-                        className={`w-[40px] h-[40px] object-cover rounded-lg group-hover:scale-110 transition-all duration-400 ease-out ${activeIndex === index ? 'scale-110' : null}`}
+                        className={`w-[40px] h-[40px] object-cover rounded-lg group-hover:scale-110 transition-all duration-500 ease-out ${activeIndex === index ? 'scale-110' : null}`}
                     />
-                    <h3 className={`dark:text-white text-[18px] group-hover:font-bold transition-all duration-400 ease-out ${activeIndex === index ? 'font-bold' : null}`}>{item.name}</h3>
+                    <h3 className={`dark:text-white text-[18px] group-hover:font-bold transition-all duration-500 ease-out ${activeIndex === index ? 'font-bold' : null}`}>{item.name}</h3>
                 </div>
             ))}
         </div>
