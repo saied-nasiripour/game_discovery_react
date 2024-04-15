@@ -3,6 +3,7 @@ import Banner from "../Components/Banner.jsx";
 import {useEffect, useState} from "react";
 import GlobalAPi from "../Services/GlobalAPi.jsx";
 import Spinner from "../Components/Spinner.jsx";
+import TrendingGames from "../Components/TrendingGames.jsx";
 
 function Home() {
 
@@ -32,8 +33,11 @@ function Home() {
             <div className="col-span-4 md:col-span-3">
                 {
                     allGameList?.length > 0
-                        ? <Banner gameBanner={allGameList[0]}/>
-                        : <div className="flex justify-center items-center h-full w-full"><Spinner/></div>
+                        ? <div>
+                            <Banner gameBanner={allGameList[0]}/>
+                            <TrendingGames gameList={allGameList}/>
+                    </div>
+                        : null/*<div className="flex justify-center items-center h-full w-full"><Spinner/></div>*/
                 }
             </div>
         </div>
