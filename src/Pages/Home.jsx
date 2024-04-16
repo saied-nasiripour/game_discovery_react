@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import GlobalAPi from "../Services/GlobalAPi.jsx";
 import Spinner from "../Components/Spinner.jsx";
 import TrendingGames from "../Components/TrendingGames.jsx";
-import {GamesByGenresId} from "../Components/GamesByGenresId.jsx";
+import GamesByGenresId from "../Components/GamesByGenresId.jsx";
 
 function Home() {
 

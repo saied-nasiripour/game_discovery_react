@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'default-text': '#333', // preferred default text color in light mode
+        'default-text': '#191919', // preferred default text color in light mode
       },
     },
   },
