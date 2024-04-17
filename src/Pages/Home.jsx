@@ -10,6 +10,7 @@ function Home() {
 
     const [allGameList, setAllGameList] = useState([]);
     const [gameListByGenreId, setGameListByGenreId] = useState([]);
+    const [selectedGenresName, setSelectedGenresName] = useState("Action");
 
     useEffect(
         () => {
@@ -24,7 +25,7 @@ function Home() {
             (response) => {
                 // console.log(response.data.results);
                 setAllGameList(response.data.results);
-                setGameListByGenreId(response.data.results);
+
             }
         );
     };
@@ -32,7 +33,8 @@ function Home() {
     const getGameListByGenreId = (id) => {
         GlobalAPi.getGameListById(id).then(
             (response) => {
-                console.log("Game List By GenreId: ", response.data.results);
+                console.log("GenreId: ", id);
+                setGameListByGenreId(response.data.results);
             }
         );
     };
@@ -40,7 +42,9 @@ function Home() {
     return (
         <div className="grid grid-cols-4">
             <div className="hidden md:block">
-                <GenreList/>
+                <GenreList genreId={(genreId)=>getGameListByGenreId(genreId)}
+                           selectedGenresName={(name) => setSelectedGenresName(name)}
+                />
             </div>
             <div className="col-span-4 md:col-span-3">
                 {
@@ -48,7 +52,10 @@ function Home() {
                         ? <div>
                             <Banner gameBanner={allGameList[0]}/>
                             <TrendingGames gameList={allGameList}/>
-                            <GamesByGenresId gameList={allGameList}/>
+                            <GamesByGenresId
+                                gameList={gameListByGenreId}
+                                selectedGenresName={selectedGenresName}
+                            />
                         </div>
                         : null/*<div className="flex justify-center items-center h-full w-full"><Spinner/></div>*/
                 }

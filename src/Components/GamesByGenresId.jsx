@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { FaStar, FaComment, FaFire } from "react-icons/fa";
 
-function GamesByGenresId({gameList}) {
+function GamesByGenresId({gameList, selectedGenresName}) {
 
     console.log("gameList: ", gameList);
 
     return (
         <div className="mt-5">
-            <h2 className="font-bold text-[30px]">Popular Game</h2>
+            <h2 className="font-bold text-[30px]">{selectedGenresName} Game</h2>
             <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     gameList.map((item) => (
@@ -37,11 +37,13 @@ function GamesByGenresId({gameList}) {
 }
 
 GamesByGenresId.propTypes = {
-    gameList: PropTypes.array.isRequired
+    gameList: PropTypes.array.isRequired,
+    selectedGenresName: PropTypes.string.isRequired
 };
 
 GamesByGenresId.defaultProps = {
-    gameList: []
+    gameList: [],
+    selectedGenresName: "Popular",
 };
 
 export default GamesByGenresId;

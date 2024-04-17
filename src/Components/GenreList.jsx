@@ -1,7 +1,8 @@
 import GlobalAPi from "../Services/GlobalAPi.jsx";
 import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
-export default function GenreList() {
+export default function GenreList({genreId, selectedGenresName}) {
 
     const [genreList, setGenreList] = useState([]);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -25,7 +26,13 @@ export default function GenreList() {
             {genreList.map((item, index) => (
                 <div
                     key={item.id}
-                    onClick={() => setActiveIndex(index)}
+                    onClick={
+                        () => {
+                            setActiveIndex(index);
+                            genreId(item.id);
+                            selectedGenresName(item.name);
+                        }
+                    }
                     className={`flex gap-2 items-center mb-2 cursor-pointer hover:bg-gray-300 hover:dark:bg-gray-600 p-2 rounded-lg group ${activeIndex === index ? 'bg-gray-300 dark:bg-gray-600' : null}`}>
                     <img
                         src={item.image_background}
@@ -38,3 +45,11 @@ export default function GenreList() {
         </div>
     );
 }
+
+GenreList.propTypes = {
+    genreId: PropTypes.number.isRequired
+};
+
+GenreList.defaultProps = {
+    genreId: 4
+};
