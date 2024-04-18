@@ -3,7 +3,7 @@ import { FaStar, FaComment, FaFire } from "react-icons/fa";
 
 function GamesByGenresId({gameList, selectedGenresName}) {
 
-    console.log("gameList: ", gameList);
+    // console.log("gameList: ", gameList);
 
     return (
         <div className="mt-5">

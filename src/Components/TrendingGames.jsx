@@ -1,11 +1,11 @@
 export function TrendingGames({gameList}) {
 
-    useEffect(
+/*    useEffect(
         () => {
             console.log(gameList);
         },
         []
-    );
+    );*/
 
     return (
         <div className="hidden sm:block mt-10">
