@@ -9,7 +9,7 @@ function Header() {
   const { isClick, setIsClick } = useContext(ToggleMenuContext);
 
   const toggleMenu = () => {
-    setIsClick(!isClick);
+    setIsClick((clicked) => !clicked);
   };
 
   return (

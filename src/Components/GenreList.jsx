@@ -7,7 +7,7 @@ import {ToggleMenuContext} from "../Context/ToggleMenuContext.jsx";
 export default function GenreList({ genreId, selectedGenresName }) {
   const [genreList, setGenreList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { isClick} = useContext(ToggleMenuContext);
+  const {isClick} = useContext(ToggleMenuContext);
 
   useEffect(() => {
     getGenreList();
